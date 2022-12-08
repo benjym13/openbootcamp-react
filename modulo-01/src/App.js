@@ -1,4 +1,5 @@
 import './App.css';
+import Father from './components/container/father';
 import TaskList from './components/container/task_list';
 
 
@@ -8,9 +9,9 @@ function App() {
   }
   return (
     <div className="App">
-      <header className="App-header">
-        <TaskList></TaskList>
-      </header>
+        {/* <TaskList></TaskList> */}
+        {/* GESTIÓN DE EVENTOS */}
+        <Father></Father>
     </div>
   );
 }
