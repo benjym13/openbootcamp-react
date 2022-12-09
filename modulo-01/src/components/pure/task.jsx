@@ -2,8 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Task } from '../../models/task.class'
 import { LEVELS } from '../../models/levels'
+import {task} from '../styles/task.scss'
 
-const TaskComponent = ({props}) => {
+const TaskComponent = ({props, complete, remove}) => {
     /* 
     FUNCIÓN PARA IMPLEMENTAR ETIQUETAS
     HEMOS IMPLEMENTADO UN SWITCH PARA QUE RETONE UN HTML U TRO EN FUNCION DE LO QUE DEVUELVA props.level
@@ -43,11 +44,12 @@ const TaskComponent = ({props}) => {
     */
     function iconCompleted() {
         if(props.completed) {
-            return  <i className='bi-toggle-on' style={{color: 'green'}}></i> ;
+            return  <i className='bi-toggle-on task-action' style={{color: 'green'}} onClick={() => {complete(props)}}></i> ;
         } else {
-            return  <i className='bi-toggle-off'  style={{color: 'grey'}}></i>;
+            return  <i className='bi-toggle-off task-action'  style={{color: 'grey'}} onClick={() => {complete(props)}}></i>;
         }
     }
+
     return (
         <tr>
             <th >{ props.name }</th>
@@ -59,12 +61,19 @@ const TaskComponent = ({props}) => {
             <td className='align-middle'>
                 { iconCompleted() }
             </td>
+            <td className='align-middle'>
+                {/* Execution of function to return icon depending on completion */}
+                <i className='bi-trash task-action' style={{color: 'tomato'}} onClick={() => {remove(props)}}></i>
+            </td>
+
         </tr>
     )
 }
 
 TaskComponent.propTypes = {
-    props: PropTypes.instanceOf(Task)
+    props: PropTypes.instanceOf(Task).isRequired,
+    complete: PropTypes.func.isRequired,
+    remove: PropTypes.func.isRequired
 }
 
 export default TaskComponent;

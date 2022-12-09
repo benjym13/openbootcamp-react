@@ -9,9 +9,9 @@ function App() {
   }
   return (
     <div className="App">
-        {/* <TaskList></TaskList> */}
+        <TaskList></TaskList>
         {/* GESTIÓN DE EVENTOS */}
-        <Father></Father>
+       {/*  <Father></Father> */}
     </div>
   );
 }
