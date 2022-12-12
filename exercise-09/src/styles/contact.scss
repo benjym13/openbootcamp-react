@@ -1,0 +1,38 @@
+.contact {
+    &--item {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        column-gap: 24px;
+
+    }
+}
+.icon-status {
+    cursor: pointer;
+    &::before {
+        content: '';
+        height: 8px;
+        width: 8px;
+        border-radius: 100%;
+        display: inline-block;
+        border: 1px solid black;
+        margin-right: 16px;
+        vertical-align: middle;
+    }
+    &--online {
+        &::before {
+            content: '';
+            background-color: lightgreen;
+        }
+    }
+    &--offline {
+        &::before {
+            content: '';
+            background-color: lightcoral;
+        }
+        
+    }
+}
+.trash {
+    cursor: pointer;
+}
