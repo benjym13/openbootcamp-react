@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { Task } from '../../models/task.class'
 import { LEVELS } from '../../models/levels';
 import TaskComponent from '../pure/task';
-import Form from '../pure/task';
 import FormTask from '../pure/forms/formTask';
 
 const TaskList = () => {

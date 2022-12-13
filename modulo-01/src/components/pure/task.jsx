@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Task } from '../../models/task.class'
 import { LEVELS } from '../../models/levels'
-import {task} from '../styles/task.scss'
+import '../styles/task.scss'
 
 const TaskComponent = ({props, complete, remove}) => {
     /* 
