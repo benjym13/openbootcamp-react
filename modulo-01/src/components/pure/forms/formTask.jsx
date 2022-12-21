@@ -3,10 +3,12 @@ import PropTypes from 'prop-types'
 import { LEVELS } from '../../../models/levels';
 import { Task } from '../../../models/task.class';
 
-const FormTask = ({add}) => {
+const FormTask = ({add, buttonName}) => {
+
     const nameRef = useRef();
     const descripRef = useRef()
     const levelRef = useRef(LEVELS.NORMAL)
+
     function addTask(e) {
         e.preventDefault();
         const newTask = new Task (
@@ -29,7 +31,7 @@ const FormTask = ({add}) => {
                 <option value={LEVELS.MEDIO}>Medio</option>
                 <option value={LEVELS.URGENTE}>Urgente</option>
             </select>
-            <button>submit</button>
+            <button>{buttonName}</button>
         </form>
     )
 }

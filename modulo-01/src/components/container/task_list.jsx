@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { Task } from '../../models/task.class'
 import { LEVELS } from '../../models/levels';
@@ -11,6 +11,53 @@ const TaskList = () => {
     const taskThree = new Task('Example', 'Default description', false, LEVELS.MEDIO);
 
     const [tasks, setTasks] = useState([taskOne, taskTwo, taskThree]);
+    const [loading, setLoading] = useState(true);
+    // hemos sacado la tabla en un componenente a parte
+    useEffect(() => {
+        setTimeout(()=> {
+            setLoading(!loading);
+        }, 2000)
+    
+    
+    },[])
+    
+    const Table = () => {
+        return (
+            <table>
+                <thead>
+                    <tr>
+                        <th scope="col">Title</th>
+                        <th scope="col">Descrition</th>
+                        <th scope="col">Priority</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    { tasks.map((task, index) => {
+                        return (
+                                <TaskComponent 
+                                    key={index} 
+                                    props={task}
+                                    complete={completeTask}
+                                    remove={removeTask}
+                                ></TaskComponent>
+                            )
+                        }
+                    )}
+                </tbody>
+            </table>
+        )
+    }
+
+    let taskTable 
+    if(tasks.length > 0 ) {
+        taskTable =   <Table></Table>
+    } else {
+        taskTable = 
+        (
+            <h3>There are no taks to show</h3>
+        )
+    }
 
     function completeTask(task) {
         console.log('complete this task ', task);
@@ -45,33 +92,12 @@ const TaskList = () => {
                     <h5>Your tasks: </h5>
                 </div>
                 <div className='card-body' >
-                    <table>
-                        <thead>
-                            <tr>
-                                <th scope="col">Title</th>
-                                <th scope="col">Descrition</th>
-                                <th scope="col">Priority</th>
-                                <th scope="col">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            { tasks.map((task, index) => {
-                                return (
-                                        <TaskComponent 
-                                            key={index} 
-                                            props={task}
-                                            complete={completeTask}
-                                            remove={removeTask}
-                                        ></TaskComponent>
-                                    )
-                                }
-                            )}
-                        </tbody>
-                    </table>
+                    {loading ?(<p>loading task</p>) : taskTable}
                 </div>
             </div>
             <FormTask
                 add={addNewTask}
+                buttonName={tasks.length > 0 ? 'add task' : 'add first task'} 
             ></FormTask>
         </div>
     );

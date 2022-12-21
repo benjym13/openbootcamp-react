@@ -1,7 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+// Models
 import { Task } from '../../models/task.class'
 import { LEVELS } from '../../models/levels'
+//SCSS
 import '../styles/task.scss'
 
 const TaskComponent = ({props, complete, remove}) => {
@@ -49,9 +51,9 @@ const TaskComponent = ({props, complete, remove}) => {
             return  <i className='bi-toggle-off task-action'  style={{color: 'grey'}} onClick={() => {complete(props)}}></i>;
         }
     }
-
+    /* Stylo en función de si el task está completado o no */
     return (
-        <tr>
+        <tr className={`fw-normal ${props.completed ? 'task-completed' : 'task-pending'}`}>
             <th >{ props.name }</th>
             <td className='align-middle'>{ props.description }</td>
             <td className='align-middle'>
