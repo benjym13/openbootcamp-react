@@ -4,6 +4,7 @@ import { Task } from '../../models/task.class'
 import { LEVELS } from '../../models/levels';
 import TaskComponent from '../pure/task';
 import FormTask from '../pure/forms/formTask';
+import FormTaskFormik from '../pure/forms/formTaskFormik';
 
 const TaskList = () => {
     const taskOne = new Task('Example', 'Default description', true, LEVELS.NORMAL);
@@ -19,7 +20,7 @@ const TaskList = () => {
         }, 2000)
     
     
-    },[])
+    },[loading])
     
     const Table = () => {
         return (
@@ -80,7 +81,7 @@ const TaskList = () => {
     }
     function addNewTask(newTask) {
         const tempTask = [...tasks]
-        console.log(tempTask)
+        console.log(tempTask.length)
         tempTask.push(newTask)
         setTasks(tempTask);
        
@@ -92,13 +93,17 @@ const TaskList = () => {
                     <h5>Your tasks: </h5>
                 </div>
                 <div className='card-body' >
-                    {loading ?(<p>loading task</p>) : taskTable}
+                    {/* {loading ?(<p>loading task</p>) : taskTable} */}
+                    {taskTable}
                 </div>
             </div>
-            <FormTask
+           {/*  <FormTask
                 add={addNewTask}
                 buttonName={tasks.length > 0 ? 'add task' : 'add first task'} 
-            ></FormTask>
+            ></FormTask> */}
+            <FormTaskFormik
+                add={addNewTask}
+            ></FormTaskFormik>
         </div>
     );
 }

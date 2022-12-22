@@ -12,14 +12,14 @@ function App() {
   }
   return (
     <div className="App">
-       {/*  <TaskList></TaskList> */}
+        <TaskList></TaskList>
         {/* GESTIÓN DE EVENTOS */}
         {/*  <Father></Father> */}
         {/*  RENDERIZADO CONDICIONAL */}
        {/*  <ConditionalRender/> */}
        {/* Ejemplo de FORMIK */}
         {/* <LoginFormik></LoginFormik> */}
-        <RegisterFormik></RegisterFormik>
+        {/* <RegisterFormik></RegisterFormik> */}
     </div>
   );
 }
