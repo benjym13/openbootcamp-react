@@ -8,6 +8,7 @@ import RegisterFormik from './components/pure/forms/registerFormik';
 import FetchExample from './components/pure/fetchExample';
 import AxiosExample from './components/pure/AxiosExample';
 import Chuck from './components/pure/Chuck';
+import AxiosLogin from './components/pure/forms/AxiosLogin';
 
 
 function App() {
@@ -25,10 +26,11 @@ function App() {
         {/* <LoginFormik></LoginFormik> */}
         {/* <RegisterFormik></RegisterFormik> */}
         {/* Ejemplos de async */}
-        {/* <AsynExample></AsynExample> */}
-       {/*  <FetchExample></FetchExample> */}
+       {/*  <AsynExample></AsynExample> */}
+        {/* <FetchExample></FetchExample> */}
        {/* <AxiosExample></AxiosExample> */}
-       <Chuck></Chuck>
+      {/*  <Chuck></Chuck> */}
+      <AxiosLogin></AxiosLogin>
     </div>
   );
 }

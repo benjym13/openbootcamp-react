@@ -22,6 +22,31 @@ const TaskList = () => {
     
     },[loading])
     
+    function completeTask(task) {
+        console.log('complete this task ', task);
+        // creamos un index para saber el indice dentro del array tasks
+        const index = tasks.indexOf(task);
+        // con el spread cogemos todos los tasks
+        const tempTask = [...tasks];
+        // decimos que el completed del task que se este pulsando cambie al valor contrario
+        tempTask[index].completed = !tempTask[index].completed;
+        // actualizamos el estado de las tasks
+        setTasks(tempTask);
+        console.log('complete this task ', task);
+    }
+    function removeTask(task) {
+        console.log('we are going to deleta', task)
+        const index = tasks.indexOf(task);
+        const tempTask = [...tasks];
+        tempTask.splice(index, 1);
+        setTasks(tempTask);
+    }
+    function addNewTask(newTask) {
+        const tempTask = [...tasks]
+        console.log(tempTask.length)
+        tempTask.push(newTask)
+        setTasks(tempTask);
+    }
     const Table = () => {
         return (
             <table>
@@ -60,32 +85,6 @@ const TaskList = () => {
         )
     }
 
-    function completeTask(task) {
-        console.log('complete this task ', task);
-        // creamos un index para saber el indice dentro del array tasks
-        const index = tasks.indexOf(task);
-        // con el spread cogemos todos los tasks
-        const tempTask = [...tasks];
-        // decimos que el completed del task que se este pulsando cambie al valor contrario
-        tempTask[index].completed = !tempTask[index].completed;
-        // actualizamos el estado de las tasks
-        setTasks(tempTask);
-        console.log('complete this task ', task);
-    }
-    function removeTask(task) {
-        console.log('we are going to deleta', task)
-        const index = tasks.indexOf(task);
-        const tempTask = [...tasks];
-        tempTask.splice(index, 1);
-        setTasks(tempTask);
-    }
-    function addNewTask(newTask) {
-        const tempTask = [...tasks]
-        console.log(tempTask.length)
-        tempTask.push(newTask)
-        setTasks(tempTask);
-       
-    }
     return (
         <div className='col-12'>
             <div className='card'>
